@@ -1,0 +1,255 @@
+page, .main {
+  height: 100%;
+}
+
+.location {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  padding: 0 .5rem;
+  margin-bottom: .5rem;
+}
+
+.location .change-shop {
+  color: #C6834E;
+  margin-right: .5rem;
+}
+
+.location .shop-name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: .5rem;
+}
+
+.location .outer-tran {
+  color: #8a8a8a;
+  border: 1px solid #8a8a8a;
+  border-radius: .4em;
+  padding: 0 .2rem;
+  font-size: 12px;
+}
+
+.location .contact {
+  font-size: 12px;
+  color: #8a8a8a;
+  margin-top: .2rem;
+  white-space: nowrap;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: .5rem;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main-info .left-list {
+  width: 28%;
+  height: 100%;
+  font-size: 14px;
+  color: #8a8a8a;
+  background-color: #efefef;
+}
+
+.main-info .left-item {
+  padding: 1rem .3rem;
+  border-left: 4px solid transparent;
+}
+
+.main-info .left-item .name {
+  margin-right: .2rem;
+}
+
+.main-info .active.left-item {
+  color: #000;
+  border-left: 4px solid #C6834E;
+  background-color: #fff;
+}
+
+.main-info .right-content {
+  width: 70%;
+  height: 100%;
+}
+
+.main-info .right-content .banner image {
+  width: 100%;
+  height: 150px;
+}
+
+.main-info .right-content .content-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+}
+
+.main-info .right-content .content-item image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.main-info .right-content .list-title {
+  margin: .5rem 0;
+}
+
+.main-info .right-content .pro-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: .5rem;
+}
+
+.main-info .right-content .pro-title {
+  margin: .2rem 0;
+  font-size: 14px;
+}
+
+.main-info .right-content .pro-detail {
+  height: 32px;
+  font-size: 10px;
+  line-height: 16px;
+  vertical-align: middle;
+  color: #8a8a8a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-info .right-content .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 32px;
+}
+
+.main-info .right-content .price .new {
+  color: #C6834E;
+  font-size: 16px;
+  font-weight: 550;
+  margin-right: .5rem;
+}
+
+.main-info .right-content .price .old {
+  position: relative;
+  top: -.15em;
+  color: #8a8a8a;
+  font-size: 12px;
+  vertical-align: middle;
+  text-decoration: line-through;
+}
+
+.main-info .right-content .price .select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 20px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-info .right-content .price .nums {
+  margin: 0 .5rem;
+  text-align: center;
+  color: #C6834E;
+}
+
+.main-info .right-content .price .add {
+  font-size: 20px;
+  margin-right: .5rem;
+  color: #C6834E;
+}
+
+.main-info .right-content .price .mins {
+  font-size: 20px;
+  color: #acacac;
+}
+
+.icon-xinpin {
+  color: #a30;
+}
+
+.icon-binggan {
+  color: #c7b302;
+}
+
+.icon-miao {
+  color: #C6834E;
+}
+
+.icon-huangguan {
+  color: #c7b302;
+}
+
+.icon-shuiguo1 {
+  color: #03b603;
+}
+
+.icon-cake {
+  color: #C6834E;
+}
+
+.icon-mangguo {
+  color: #f5c117;
+}
+
+.icon-caomei {
+  color: #a30;
+}
+
+.icon-zhenzhunaicha {
+  color: #333;
+}
+
+.icon-tiandian {
+  color: #0066ff;
+}
+
+.icon-zhishi {
+  color: #a30;
+}
+
+.icon-linggan {
+  color: #008cff;
+}
+/*# sourceMappingURL=index.wxss.map */

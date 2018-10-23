@@ -1,0 +1,181 @@
+page, .main{
+  height: 100%;
+}
+.location{  
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 .5rem;
+  margin-bottom: .5rem;
+  .change-shop{
+    color: #C6834E;
+    margin-right: .5rem;
+  }
+  .shop-name{
+    font-weight: 600;
+    font-size: 16px;
+    margin-right: .5rem;
+  }
+  .outer-tran{
+    color: #8a8a8a;
+    border: 1px solid #8a8a8a;
+    border-radius: .4em;
+    padding: 0 .2rem;
+    font-size: 12px;
+  }
+  .contact{    
+    font-size: 12px;
+    color: #8a8a8a;
+    margin-top: .2rem;
+    white-space: nowrap;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.main-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: .5rem;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  .left-list{    
+    width: 28%;
+    height: 100%;
+    font-size: 14px;    
+    color: #8a8a8a;
+    background-color: #efefef;
+  } 
+  .left-item{
+    padding: 1rem .3rem;
+    border-left: 4px solid transparent;
+    .name{
+      margin-right: .2rem;
+    }
+  }
+  .active.left-item{
+    color: #000;
+    border-left: 4px solid #C6834E;
+    background-color: #fff;
+  }
+  .right-content{
+    width: 70%;
+    height: 100%;
+    .banner{
+      image{
+        width: 100%;
+        height: 150px;
+      }
+    }
+    .content-item{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      margin: 1rem 0;
+      image{
+        width: 120rpx;
+        height: 120rpx;
+      }      
+    }
+    .list-title{
+      margin: .5rem 0;
+    }
+    .pro-info{
+      display: flex;      
+      flex-direction: column;
+      padding-left: .5rem;
+    }
+    .pro-title{
+      margin: .2rem 0;
+      font-size: 14px;      
+    }
+    .pro-detail{
+      height: 32px;
+      font-size: 10px;
+      line-height: 16px;
+      vertical-align: middle;
+      color: #8a8a8a;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .price{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 32px;   
+      .new{
+        color: #C6834E;
+        font-size: 16px;             
+        font-weight: 550;        
+        margin-right: .5rem;
+      }
+      .old{
+        position: relative;
+        top: -.15em;
+        color: #8a8a8a;
+        font-size: 12px;              
+        vertical-align: middle;
+        text-decoration: line-through;                
+      }
+      .select{
+        display: flex;
+        font-size: 20px;
+        flex-direction: row;
+        align-items: center; 
+      }
+      .nums{
+        margin: 0 .5rem;                      
+        text-align: center;
+        color: #C6834E;
+      }
+      .add{   
+        font-size: 20px;     
+        margin-right: .5rem;
+        color: #C6834E;
+      }
+      .mins{
+        font-size: 20px;
+        color: #acacac;
+      }
+    }
+  }
+}
+.icon-xinpin{
+  color: #a30;  
+}
+.icon-binggan{
+  color: rgb(199, 179, 2);  
+}
+.icon-miao{
+  color: #C6834E;
+}
+.icon-huangguan{
+  color: rgb(199, 179, 2);
+}
+.icon-shuiguo1{
+  color: rgb(3, 182, 3);
+}
+.icon-cake{
+  color: #C6834E;
+}
+.icon-mangguo{
+  color: rgb(245, 193, 23);;  
+}
+.icon-caomei{
+  color: #a30;
+}
+.icon-zhenzhunaicha{
+  color: #333;
+}
+.icon-tiandian{
+  color: rgb(0, 102, 255);
+}
+.icon-zhishi{
+  color: #a30;
+}
+.icon-linggan{
+  color: rgb(0, 140, 255);
+}

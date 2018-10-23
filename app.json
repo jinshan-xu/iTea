@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/gettea/gettea",
+    
+    "pages/logs/logs",    
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",    
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#C6834E",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",    
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "点单",
+      "iconPath": "assets/images/navbar/tea.png",
+      "selectedIconPath": "assets/images/navbar/tea-brown.png"
+    },
+    {
+      "pagePath": "pages/gettea/gettea",
+      "text": "取茶",
+      "iconPath": "assets/images/navbar/ticket.png",
+      "selectedIconPath": "assets/images/navbar/ticket-brown.png"
+    },
+    {
+      "pagePath": "pages/user/user",
+      "text": "我的",
+      "iconPath": "assets/images/navbar/user.png",
+      "selectedIconPath": "assets/images/navbar/user-brown.png"
+    }
+    ]
+  }
+}

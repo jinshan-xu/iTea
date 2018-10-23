@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="location">
+    <text class="change-shop">[换门店]</text>
+    <text class="shop-name">龙华九方店</text>
+    <text class="outer-tran">可外送</text>
+    <view class="contact">
+      <text class="tel">联系电话: 0755-21007831</text>
+      <text class="addr">龙华区龙华新区人民路2020号九方购物中心一楼L167号</text>
+    </view>
+  </view>
+  <view class="main-info">
+
+    <scroll-view class="left-list" scroll-y>
+      <view class="left-item {{curIndex == index ? 'active' : ''}}" wx:for="{{leftList}}" wx:key="index" bindtap="switchTab"
+        data-index="{{index}}">
+        <text class="name" data-index="{{index}}">{{item.name}}</text><text class="iconfont icon-{{item.id}}"
+          data-index="{{index}}"></text>
+      </view>
+    </scroll-view>
+
+    <scroll-view class="right-content" scroll-y="{{isScroll}}" scroll-into-view="{{toView}}" scroll-with-animation="true"
+      scroll-top="{{scrollTop}}">
+
+      <view class="banner">
+        <image src="../../assets/images/banner/banner01.jpg" aspectFill width="375" height="150" />
+      </view>
+      <view class="banner">
+        <image src="../../assets/images/banner/banner02.jpg" aspectFill width="375" height="150" />
+      </view>
+
+      <view>
+        <view class="list-title" id="xinpin">
+          <text class="name">叹茶新品</text><text class="iconfont icon-xinpin"></text>
+        </view>
+        <view class="content-item">
+          <view class="image">
+            <image src="../../assets/images/pro/img_01.png" aspectFill width="375" height="150" />
+          </view>
+          <view class="pro-info">
+            <view class="pro-title">
+              <text>流沙牛角</text>
+            </view>
+            <view class="pro-detail">
+              <text>在酥脆的牛角中注入咸蛋黄流沙,黄油甜沙中带有颗粒的微咸,层次丰富,满口留香.黄油甜沙中带有颗粒的微咸,层次丰富,满口留香</text>
+            </view>
+            <view class="price">
+              <view>
+                <text class="new">$8</text><text class="old">$10</text>
+              </view>
+              <view class="select">
+                <text class="iconfont icon-jian-tianchong mins"></text><text class="nums">7</text><text class="iconfont icon-jia-tianchong add"></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+    </scroll-view>
+  </view>
+</view>
