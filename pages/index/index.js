@@ -14,12 +14,16 @@ Page({
     curIndex: 0,
     isScroll: true,
     scrollTop: 1,
-    toView: ''
+    toView: '',    
+    selectPro: [
+      {9999: false},
+      {9999: 0}
+    ]  // pidList pNumList
   },
   onLoad: function(options){
     var self = this;    
     wx.request({
-      url: 'http://127.0.0.1:3001/index/class-list',      
+      url: 'https://myserver.applinzi.com/iteaIndex/class-list',      
       method: 'get',
       success: function(res) {        
       self.setData({
@@ -28,7 +32,7 @@ Page({
       }
     });
     wx.request({      
-      url: 'http://127.0.0.1:3001/index/banner',
+      url: 'https://myserver.applinzi.com/iteaIndex/banner',
       methos: 'get',
       success: function(res){        
         self.setData({
@@ -37,7 +41,7 @@ Page({
       }
     });
     wx.request({      
-      url: 'http://127.0.0.1:3001/index/pro-list',
+      url: 'https://myserver.applinzi.com/iteaIndex/pro-list',
       methos: 'get',
       success: function(res){
         console.log(self.classProList(res.data));             
@@ -66,8 +70,6 @@ Page({
     });
   },
   classProList: function(list){
-    // list -> [{},{}...]
-    // target -> proList -> [ [{},{}..], [{}],..]
     var arr = {};
     var type = '';
     for(let item of list){                         
@@ -82,5 +84,25 @@ Page({
       arr[type]['data'].push(item);
     }
     return arr;
+  },
+  addProNum: function(e){    
+    var pid = e.target.dataset.pid;
+    var selectPro = this.data.selectPro;
+    selectPro[0][pid] = true;
+    var num = selectPro[1][pid];
+    num = num ? num + 1 : 1; 
+    selectPro[1][pid] = num;
+    this.setData({selectPro});
+  },
+  minsProNum: function(e){
+    var pid = e.target.dataset.pid;
+    var selectPro = this.data.selectPro;    
+    var num = selectPro[1][pid];
+    num = num ? num - 1 : 0; 
+    if(!num){
+      selectPro[0][pid] = false;
+    }
+    selectPro[1][pid] = num;
+    this.setData({selectPro});
   }
 })

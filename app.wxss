@@ -9,15 +9,23 @@
   font-size: 14px;
   font-family: "微软雅黑", "Microsoft YaHei", tahoma, arial, "Helvetica Neue", \5b8b\4f53,
 } 
+.clearfix::after{
+  content: '';
+  height: 0;
+  visibility: none;
+  display: block;
+  clear: both;
+}
+
 
 /* iconfont */
 @font-face {
   font-family: 'iconfont';  /* project id 884342 */
-  src: url('//at.alicdn.com/t/font_884342_lov2ky3w28i.eot');
-  src: url('//at.alicdn.com/t/font_884342_lov2ky3w28i.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_884342_lov2ky3w28i.woff') format('woff'),
-  url('//at.alicdn.com/t/font_884342_lov2ky3w28i.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_884342_lov2ky3w28i.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.eot');
+  src: url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.woff') format('woff'),
+  url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -28,9 +36,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-iconset0316:before { content: "\e6d7"; }
+
 .icon-huangguan:before { content: "\e620"; }
 
 .icon-renminbi:before { content: "\e66b"; }
+
+.icon-renminbi4:before { content: "\e73f"; }
 
 .icon-linggan:before { content: "\e628"; }
 
@@ -71,6 +83,8 @@
 .icon-tiandian:before { content: "\e627"; }
 
 .icon-caomei:before { content: "\e621"; }
+
+.icon-renminbiqian:before { content: "\e624"; }
 
 .icon-jianqu_fill:before { content: "\e604"; }
 

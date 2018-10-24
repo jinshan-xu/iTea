@@ -22,7 +22,7 @@
       scroll-top="{{scrollTop}}">
 
       <view class="banner" wx:for="{{banner}}" wx:key="index">
-        <image src="http://127.0.0.1:3001/{{item.img}}" aspectFill width="375" height="150" />
+        <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150" />
       </view>
 
       <view wx:for="{{proList}}" wx:for-index="key" wx:for-item="val" wx:key="val.listOrder">
@@ -32,7 +32,7 @@
          
         <view class="content-item" wx:for="{{val.data}}" wx:key="index">
           <view class="image">
-            <image src="http://127.0.0.1:3001/{{item.img}}" aspectFill width="375" height="150" />
+            <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150"/>
           </view>
           <view class="pro-info">
             <view class="pro-title">
@@ -43,15 +43,27 @@
             </view>
             <view class="price">
               <view>
-                <text class="new">${{item.new_price}}</text><text class="old" wx:if="{{item.old_price>0}}">${{item.old_price}}</text>
+                <text class="new">￥{{item.new_price}}</text><text class="old" wx:if="{{item.old_price>0}}">￥{{item.old_price}}</text>
               </view>
               <view class="select">
-                <text class="iconfont icon-jian-tianchong mins"></text><text class="nums">1</text><text class="iconfont icon-jia-tianchong add"></text>
+                <text class="iconfont icon-jian-tianchong mins" wx:if="{{selectPro[0][item.pid]}}" bindtap="minsProNum" data-pid="{{item.pid}}"></text><text class="nums" wx:if="{{selectPro[1][item.pid]}}">{{selectPro[1][item.pid]}}</text><text class="iconfont icon-jia-tianchong add" bindtap="addProNum" data-pid="{{item.pid}}"></text>
               </view>
             </view>
           </view>
         </view>        
       </view>
     </scroll-view>
+  </view>
+  <view class="shopping-bag clearfix">
+    <view class="bag">
+      <text class="iconfont icon-iconset0316"></text><text>购物车</text>
+      <text class="num">1</text>
+    </view>
+    <view class="submit">
+      <text>结 算</text>
+    </view>
+    <view class="total-price">
+      <text>￥8</text>
+    </view>    
   </view>
 </view>
