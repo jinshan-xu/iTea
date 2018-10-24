@@ -8,60 +8,47 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    leftList: [
-      {         
-        id: "xinpin",
-        name: "叹茶新品"
-      },
-      { 
-        id: "binggan",
-        name: "鲜美小食"
-      },
-      {
-        id: "miao",
-        name: "芝士茗茶"
-      },      
-      {
-        id: "huangguan",
-        name: "当季限定"
-      },
-      { 
-        id: "shuiguo1",
-        name: "满杯鲜果"
-      },
-      {
-        id: "cake",
-        name: "茶冰淇淋"
-      },
-      { 
-        id: "mangguo",
-        name: "芒果家族"
-      },
-      { 
-        id: "caomei",
-        name: "草莓家族"
-      },
-      {
-        id: "zhenzhunaicha",
-        name: "混合茶饮"
-      },
-      {
-        id: "tiandian",
-        name: "甜点小食"
-      },
-      {
-        id: "zhishi",
-        name: "多多加料"
-      },
-      {
-        id: "linggan",
-        name: "灵感提示"
-      }      
-    ],
+    leftList: [],
+    banner: [],    
+    proList: {},
     curIndex: 0,
     isScroll: true,
     scrollTop: 1,
     toView: ''
+  },
+  onLoad: function(options){
+    var self = this;    
+    wx.request({
+      url: 'http://127.0.0.1:3001/index/class-list',      
+      method: 'get',
+      success: function(res) {        
+      self.setData({
+        leftList: res.data
+      });  
+      }
+    });
+    wx.request({      
+      url: 'http://127.0.0.1:3001/index/banner',
+      methos: 'get',
+      success: function(res){        
+        self.setData({
+          banner: res.data
+        });
+      }
+    });
+    wx.request({      
+      url: 'http://127.0.0.1:3001/index/pro-list',
+      methos: 'get',
+      success: function(res){
+        console.log(self.classProList(res.data));             
+        self.setData({
+          proList: self.classProList(res.data)
+        });               
+      }
+    });
+  },
+  onShow: function(){
+   
   },
   //事件处理函数
   bindViewTap: function() {
@@ -69,17 +56,31 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    
-  },
   getUserInfo: function(e) {
     
   },
-  switchTab: function(e){  
-    console.log(e.target);    
+  switchTab: function(e){        
     this.setData({            
-      toView: "xinpin",
+      toView: e.target.dataset.type,
       curIndex: e.target.dataset.index
     });
+  },
+  classProList: function(list){
+    // list -> [{},{}...]
+    // target -> proList -> [ [{},{}..], [{}],..]
+    var arr = {};
+    var type = '';
+    for(let item of list){                         
+      type = item.type;               
+      if(!arr[type]){
+        arr[type] = {};          
+      }              
+      if(!arr[type]['data']){
+        arr[type]['data'] = [];
+      }
+      arr[type]['listOrder'] = item.list_order;      
+      arr[type]['data'].push(item);
+    }
+    return arr;
   }
 })

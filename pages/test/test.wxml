@@ -1,0 +1,5 @@
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>
+<view wx:for="{{obj}}" wx:for-index="key" wx:for-item="value">
+  {{index}}-{{item.a}}
+</view>
