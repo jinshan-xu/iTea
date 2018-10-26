@@ -42,11 +42,13 @@
               <text>{{item.description}}</text>
             </view>
             <view class="price">
+
               <view>
                 <text class="new">￥{{item.new_price}}</text><text class="old" wx:if="{{item.old_price>0}}">￥{{item.old_price}}</text>
               </view>
-              <view class="select">
-                <text class="iconfont icon-jian-tianchong mins" wx:if="{{selectPro[0][item.pid]}}" bindtap="minsProNum" data-pid="{{item.pid}}"></text><text class="nums" wx:if="{{selectPro[1][item.pid]}}">{{selectPro[1][item.pid]}}</text><text class="iconfont icon-jia-tianchong add" bindtap="addProNum" data-pid="{{item.pid}}"></text>
+
+              <view class="select">                
+                <text class="iconfont icon-jian-tianchong mins" wx:if="{{selectPro[0][item.pid]}}" bindtap="minsProNum" data-pid="{{item.pid}}" data-price="{{item.new_price}}"></text><text class="nums" wx:if="{{selectPro[1][item.pid]}}">{{selectPro[1][item.pid]}}</text><text class="iconfont icon-jia-tianchong add" bindtap="addProNum" data-pid="{{item.pid}}" data-price="{{item.new_price}}"></text>
               </view>
             </view>
           </view>
@@ -54,16 +56,38 @@
       </view>
     </scroll-view>
   </view>
-  <view class="shopping-bag clearfix">
+  <view class="shopping-bag clearfix" wx:if="{{orderNum}}">
+    <view class="shopping-detail">
+      <view class="clear">
+        <text class="iconfont icon-shanchu"></text>清空购物袋
+      </view>
+      <view class="alertBox">
+        单笔订单限购10杯
+      </view>
+      <scroll-view class="shopping-list">
+        <view class="p-item">
+          <view class="item-left">
+            <text class="item-title">绿妍</text>
+            <text class="item-content">芝士,撒抹茶粉,标准(推荐),标准(推荐),正常冰(推荐)</text>
+          </view>
+          <view class="item-right">
+            <text class="new">￥18</text>
+            <view class="select">    
+              <text class="iconfont icon-jian-tianchong mins"  bindtap="minsProNum"></text><text class="nums">5</text><text class="iconfont icon-jia-tianchong add" bindtap="addProNum" ></text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
     <view class="bag">
       <text class="iconfont icon-iconset0316"></text><text>购物车</text>
-      <text class="num">1</text>
+      <text class="num {{bgColor}}">{{orderNum}}</text>
     </view>
     <view class="submit">
       <text>结 算</text>
     </view>
     <view class="total-price">
-      <text>￥8</text>
+      <text>￥{{totalPrice}}</text>
     </view>    
   </view>
 </view>

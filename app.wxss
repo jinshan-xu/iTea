@@ -21,11 +21,11 @@
 /* iconfont */
 @font-face {
   font-family: 'iconfont';  /* project id 884342 */
-  src: url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.eot');
-  src: url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.woff') format('woff'),
-  url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_884342_z69bmtlh3pb.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_884342_wgdopk2je4.eot');
+  src: url('//at.alicdn.com/t/font_884342_wgdopk2je4.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_884342_wgdopk2je4.woff') format('woff'),
+  url('//at.alicdn.com/t/font_884342_wgdopk2je4.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_884342_wgdopk2je4.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -43,6 +43,8 @@
 .icon-renminbi:before { content: "\e66b"; }
 
 .icon-renminbi4:before { content: "\e73f"; }
+
+.icon-shanchu:before { content: "\e630"; }
 
 .icon-linggan:before { content: "\e628"; }
 

@@ -15,10 +15,10 @@ Page({
     isScroll: true,
     scrollTop: 1,
     toView: '',    
-    selectPro: [
-      {9999: false},
-      {9999: 0}
-    ]  // pidList pNumList
+    selectPro: [{/*pid: true*/},{/*pid: num*/},{/*pid: price*/}],  // pidList pNumList
+    orderNum: 0,
+    totalPrice: 0,
+    bgColor: "normal"
   },
   onLoad: function(options){
     var self = this;    
@@ -43,8 +43,7 @@ Page({
     wx.request({      
       url: 'https://myserver.applinzi.com/iteaIndex/pro-list',
       methos: 'get',
-      success: function(res){
-        console.log(self.classProList(res.data));             
+      success: function(res){                    
         self.setData({
           proList: self.classProList(res.data)
         });               
@@ -85,24 +84,49 @@ Page({
     }
     return arr;
   },
-  addProNum: function(e){    
+  addProNum: function(e){       
     var pid = e.target.dataset.pid;
+    var price = e.target.dataset.price;
     var selectPro = this.data.selectPro;
+    var orderNum = this.data.orderNum;        
+    if(orderNum > 8){
+      this.alertNum(1);
+    }
     selectPro[0][pid] = true;
     var num = selectPro[1][pid];
     num = num ? num + 1 : 1; 
-    selectPro[1][pid] = num;
-    this.setData({selectPro});
+    selectPro[1][pid] = num;    
+    selectPro[2][pid] = price;
+    this.setData({
+      selectPro,
+      orderNum: orderNum + 1,
+      totalPrice: this.data.totalPrice + price
+    });
   },
   minsProNum: function(e){
     var pid = e.target.dataset.pid;
+    var price = e.target.dataset.price;
     var selectPro = this.data.selectPro;    
     var num = selectPro[1][pid];
     num = num ? num - 1 : 0; 
+    var orderNum = this.data.orderNum;
+    orderNum = orderNum === 0 ? 0 : orderNum - 1;
+    if(orderNum <= 9){
+      this.alertNum(-1);
+    }
     if(!num){
       selectPro[0][pid] = false;
     }
-    selectPro[1][pid] = num;
-    this.setData({selectPro});
+    selectPro[1][pid] = num;        
+    this.setData({
+      selectPro,
+      orderNum: orderNum,
+      totalPrice: this.data.totalPrice - price
+    });
+  },
+  alertNum(n){
+    this.setData({
+      bgColor: n > 0 ? "alertNum" : "normal"
+    });
   }
 })
