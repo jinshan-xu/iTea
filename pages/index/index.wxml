@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="container">
   <view class="location">
     <text class="change-shop">[换门店]</text>
@@ -9,54 +10,115 @@
       <text class="addr">龙华区龙华新区人民路2020号九方购物中心一楼L167号</text>
     </view>
   </view>
+  <!-- 半透明覆效果 -->
+  <view class="mask" wx:if="{{isShowMask}}" bindtap="hide"></view>
+
   <view class="main-info">
 
     <scroll-view class="left-list" scroll-y>
       <view class="left-item {{curIndex == index ? 'active' : ''}}" wx:for="{{leftList}}" wx:key="index" bindtap="switchTab"
         data-index="{{index}}" data-type="{{item.type}}">
-        <text class="name" data-index="{{index}}" data-type="{{item.type}}">{{item.cname}}</text><text class="iconfont icon-{{item.icon_name}}" data-index="{{index}}" data-type="{{item.type}}"></text>
+        <text class="name" data-index="{{index}}" data-type="{{item.type}}">{{item.cname}}</text><text class="iconfont icon-{{item.icon_name}}"
+          data-index="{{index}}" data-type="{{item.type}}"></text>
       </view>
     </scroll-view>
 
     <scroll-view class="right-content" scroll-y="{{isScroll}}" scroll-into-view="{{toView}}" scroll-with-animation="true"
       scroll-top="{{scrollTop}}">
-
+      <!-- 右侧banner -->
       <view class="banner" wx:for="{{banner}}" wx:key="index">
         <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150" />
       </view>
-
+      <!-- 右侧产品列表 -->
       <view wx:for="{{proList}}" wx:for-index="key" wx:for-item="val" wx:key="val.listOrder">
+        <!-- 产品类型标题 -->
         <view class="list-title" id="{{key}}">
           <text class="name">{{val.data[0].cname}}</text><text class="iconfont icon-{{val.data[0].icon_name}}"></text>
         </view>
-         
+        <!-- 产品详情 -->
         <view class="content-item" wx:for="{{val.data}}" wx:key="index">
+          <!-- 产品小图片 -->
           <view class="image">
-            <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150"/>
+            <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150" />
           </view>
           <view class="pro-info">
+            <!-- 产品名 -->
             <view class="pro-title">
               <text>{{item.name}}</text>
             </view>
+            <!-- 产品描述 -->
             <view class="pro-detail">
               <text>{{item.description}}</text>
             </view>
             <view class="price">
-
+              <!-- 产品价格 -->
               <view>
-                <text class="new">￥{{item.new_price}}</text><text class="old" wx:if="{{item.old_price>0}}">￥{{item.old_price}}</text>
+                <text class="new">￥{{common.myToFixed((item.new_price*item.dis_count),1)}}</text><text class="old"
+                  wx:if="{{item.dis_count != 1}}">￥{{item.new_price}}</text>
               </view>
-
-              <view class="select">                
-                <text class="iconfont icon-jian-tianchong mins" wx:if="{{selectPro[0][item.pid]}}" bindtap="minsProNum" data-pid="{{item.pid}}" data-price="{{item.new_price}}"></text><text class="nums" wx:if="{{selectPro[1][item.pid]}}">{{selectPro[1][item.pid]}}</text><text class="iconfont icon-jia-tianchong add" bindtap="addProNum" data-pid="{{item.pid}}" data-price="{{item.new_price}}"></text>
+              <!-- 点击按钮 -->
+              <view class="select" data-pid="{{item.pid}}" bindtap="plus" data-price="{{item.new_price}}">
+                <view>
+                  <text class="iconfont icon-jian-tianchong mins" data-plus="-1" wx:if="{{shoppingList[item.pid]}}"></text><text
+                    class="nums" wx:if="{{shoppingList[item.pid]}}">{{shoppingList[item.pid].add.num}}</text><text class="iconfont icon-jia-tianchong add"
+                    data-plus="1" wx:if="{{item.chos_spec == 0}}"></text>
+                </view>
+                <!-- 选规格按钮 -->
+                <view class="spec-btn" wx:if="{{item.chos_spec == 1}}">
+                  <text bindtap="choseSpec" data-pid="{{item.pid}}">选规格</text><text class="spec-btn-num" wx:if="{{proTotal[item.pid]}}">{{proTotal[item.pid]}}</text>
+                </view>
               </view>
             </view>
           </view>
-        </view>        
+        </view>
+      </view>
+
+      <!-- 规格选取弹框 -->
+      <view class="chos-spec" wx:if="{{isShowSpecBox}}">
+        <!-- 提示标题 -->
+        <view class="spec-title">
+          {{chosePro.name}}
+          <text class="iconfont icon-xiaoguanbi close" bindtap="hide"></text>
+        </view>
+        <!-- 中部滚动窗 -->
+        <scroll-view class="spec-scroll-view" scroll-y="true">
+          <view class="spec view-item" wx:for="{{selectedProSpec}}" wx:for-item="val" wx:for-index="key" wx:key="val.order">
+            <view class="spec-name">
+              <text>{{selectedProSpec[key].arr[0]}}:</text>
+            </view>
+            <view class="spec-content" data-specid="{{key}}" bindtap="confirmSpec">
+              <view class="spec-item" wx:for="{{selectedProSpec[key].arr}}" wx:key="index">
+                <text data-index="{{index}}" class="{{index==selectedProSpec[key].selectIndex? 'selected' : ''}}" wx:if="{{index > 0}}" data-idx="{{index}}">{{item}} <text wx:if="{{key == 'spec' && index == 2}}" class="discount-price">￥{{disCountPrice}}</text></text>                
+                <text class="iconfont icon-xingxing star {{index == 1 ? 'selected' : ''}}" wx:if="{{index == 1}}"></text>
+              </view>
+            </view>
+          </view> 
+        </scroll-view>
+        <!-- 价格及点击按钮 -->
+        <view class="price">
+          <!-- 产品价格 -->
+          <view>
+            <text class="new">￥{{price}}</text><text class="old" wx:if="{{chosePro.dis_count != 1}}">￥{{chosePro.new_price}}</text>
+          </view>
+          <!-- 点击按钮 -->
+          <view class="select">
+            <view wx:if="{{!addToShopBtn}}" bindtap="alterSpecNum">
+              <text class="iconfont icon-jian-tianchong mins" data-plus="-1"></text><text
+                class="nums">{{specNum}}</text><text class="iconfont icon-jia-tianchong add"
+                data-plus="1"></text>
+            </view>
+            <!-- 选规格按钮 -->
+            <view class="spec-add" wx:if="{{addToShopBtn}}" bindtap="addToShop">
+              <text class="iconfont icon-iconset0316"></text><text>加入购物车</text>
+            </view>
+          </view>
+        </view>
       </view>
     </scroll-view>
-  </view>
+  </view>  
+  <!-- 下方购物袋 -->
   <view class="shopping-bag clearfix" wx:if="{{orderNum}}">
+    <!-- 下方购物袋所选产品表 -->
     <view class="shopping-detail">
       <view class="clear">
         <text class="iconfont icon-shanchu"></text>清空购物袋
@@ -64,6 +126,7 @@
       <view class="alertBox">
         单笔订单限购10杯
       </view>
+      <!-- 下方购物袋产品列表 -->
       <scroll-view class="shopping-list">
         <view class="p-item">
           <view class="item-left">
@@ -72,13 +135,15 @@
           </view>
           <view class="item-right">
             <text class="new">￥18</text>
-            <view class="select">    
-              <text class="iconfont icon-jian-tianchong mins"  bindtap="minsProNum"></text><text class="nums">5</text><text class="iconfont icon-jia-tianchong add" bindtap="addProNum" ></text>
+            <view class="select">
+              <text class="iconfont icon-jian-tianchong mins" bindtap="minsProNum"></text><text class="nums">5</text><text
+                class="iconfont icon-jia-tianchong add" bindtap="addProNum"></text>
             </view>
           </view>
         </view>
       </scroll-view>
     </view>
+    <!-- 下方购物袋图标 -->
     <view class="bag">
       <text class="iconfont icon-iconset0316"></text><text>购物车</text>
       <text class="num {{bgColor}}">{{orderNum}}</text>
@@ -88,6 +153,6 @@
     </view>
     <view class="total-price">
       <text>￥{{totalPrice}}</text>
-    </view>    
+    </view>
   </view>
 </view>

@@ -205,9 +205,194 @@ page, .main {
   color: #acacac;
 }
 
+.main-info .right-content .price .spec-btn {
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  font-size: 10px;
+  right: .5rem;
+  color: #fff;
+  background-color: #C6834E;
+  border-radius: 20px;
+  padding: 0 .5rem;
+}
+
+.main-info .right-content .price .spec-btn-num {
+  position: absolute;
+  top: -.5em;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #C6834E;
+}
+
+.main-info .chos-spec {
+  position: fixed;
+  width: 600rpx;
+  height: 700rpx;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: .5rem .5rem .5rem .5rem;
+  font-size: 12px;
+  border-radius: 1em;
+  background-color: #fff;
+}
+
+.main-info .chos-spec .spec-title {
+  text-align: center;
+  margin-bottom: .2rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.main-info .chos-spec .spec-title .close {
+  float: right;
+  font-size: 20px;
+}
+
+.main-info .chos-spec .spec-scroll-view {
+  height: 500rpx;
+}
+
+.main-info .chos-spec .spec-scroll-view .view-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 1px solid #efefef;
+  padding: .5rem 0;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 2rem;
+  font-size: 12px;
+  color: #646363;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item {
+  margin: .2rem;
+  position: relative;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item:first-child {
+  margin: 0;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item text:first-child {
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 1rem;
+  font-size: 12px;
+  border: 1px solid #646363;
+  border-radius: 24px;
+  color: #646363;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item text.selected {
+  background-color: #C6834E;
+  color: #fff;
+  border-color: #C6834E;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item text.selected .discount-price {
+  color: #fff;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item .star {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #C6834E;
+  font-size: 10px;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item .star.selected {
+  color: #f3e84b;
+  background-color: transparent;
+  border: none;
+}
+
+.main-info .chos-spec .spec-scroll-view .spec-item text.discount-price {
+  border: none;
+  color: #C6834E;
+  padding: 0;
+}
+
+.main-info .chos-spec .spec-add {
+  background-color: #C6834E;
+  padding: .5rem .3rem;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.main-info .chos-spec .spec-add .iconfont {
+  margin-right: .2rem;
+}
+
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .shopping-bag {
   background-color: #dedede;
   position: fixed;
+  z-index: 8;
   bottom: 0;
   left: 0;
   width: 100%;

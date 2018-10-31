@@ -1,0 +1,22 @@
+/*common.wxs*/
+/* ?? 创建自定义函数 ?? */
+
+var fn = {
+   myToFixed : function(num, n) {
+      return num.toFixed(n)
+   },
+   getFirstNum: function(str){
+      return str.split('_')[0]
+   },
+   getSpecList: function(str, sep){
+      return str.split(sep)
+   }
+}
+
+
+module.exports  = {
+  myToFixed: fn.myToFixed,
+  getFirstNum: fn.getFirstNum,
+  getSpecList: fn.getSpecList
+}
+
