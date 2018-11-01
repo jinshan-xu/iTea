@@ -65,7 +65,7 @@
                 </view>
                 <!-- 选规格按钮 -->
                 <view class="spec-btn" wx:if="{{item.chos_spec == 1}}">
-                  <text bindtap="choseSpec" data-pid="{{item.pid}}">选规格</text><text class="spec-btn-num" wx:if="{{proTotal[item.pid]}}">{{proTotal[item.pid]}}</text>
+                  <text catchtap="choseSpec" data-pid="{{item.pid}}">选规格</text><text class="spec-btn-num" wx:if="{{proTotal[item.pid]}}">{{proTotal[item.pid]}}</text>
                 </view>
               </view>
             </view>
@@ -119,32 +119,40 @@
   <!-- 下方购物袋 -->
   <view class="shopping-bag clearfix" wx:if="{{orderNum}}">
     <!-- 下方购物袋所选产品表 -->
-    <view class="shopping-detail">
-      <view class="clear">
+    <view class="shopping-detail" wx:if="{{isShowDetail}}">
+      <view class="clear" bindtap="clearShoppingList">
         <text class="iconfont icon-shanchu"></text>清空购物袋
+        <text class="iconfont icon-xiaoguanbi close" bindtap="hide"></text>
       </view>
-      <view class="alertBox">
+      <view class="alertBox" wx:if="{{isExceed}}">
         单笔订单限购10杯
       </view>
       <!-- 下方购物袋产品列表 -->
-      <scroll-view class="shopping-list">
-        <view class="p-item">
+      <scroll-view class="shopping-list" scroll-y="true">
+        <view class="p-item" wx:for="{{listDetail}}" wx:key="index">
+        <!--  -->
+          <view class="thumbnail">
+            <image src="https://myserver.applinzi.com/{{item.img}}" />
+          </view>
           <view class="item-left">
-            <text class="item-title">绿妍</text>
-            <text class="item-content">芝士,撒抹茶粉,标准(推荐),标准(推荐),正常冰(推荐)</text>
+            <text class="item-title">{{item.title}}</text>
+            <text class="item-content">{{item.specStr}}</text>
+          </view>
+          <view class="price">
+            <view class="new">￥{{item.price}}</view>
+            <view class="discount" wx:if="{{item.oldPri}}">￥{{item.oldPri}}</view>  
           </view>
           <view class="item-right">
-            <text class="new">￥18</text>
             <view class="select">
-              <text class="iconfont icon-jian-tianchong mins" bindtap="minsProNum"></text><text class="nums">5</text><text
-                class="iconfont icon-jia-tianchong add" bindtap="addProNum"></text>
+              <text class="iconfont icon-jian-tianchong mins" bindtap="minsNum"></text><text class="nums">{{item.num}}</text><text
+                class="iconfont icon-jia-tianchong add" bindtap="addNum"></text>
             </view>
           </view>
-        </view>
+        </view>                
       </scroll-view>
     </view>
     <!-- 下方购物袋图标 -->
-    <view class="bag">
+    <view class="bag" bindtap="showDetail">
       <text class="iconfont icon-iconset0316"></text><text>购物车</text>
       <text class="num {{bgColor}}">{{orderNum}}</text>
     </view>
