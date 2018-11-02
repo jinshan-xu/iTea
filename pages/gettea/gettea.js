@@ -3,9 +3,15 @@
 Page({
   data: {
     toView: 'red',
-    scrollTop: 0
+    scrollTop: 0,
+    hasOrder: false
   },
   onLoad: function(options){
-    console.log(111);
+    
+  },
+  toIndexPage(){
+    wx.switchTab({
+      url: '../index/index'
+    });
   }
 })

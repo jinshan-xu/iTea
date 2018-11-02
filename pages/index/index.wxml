@@ -24,7 +24,7 @@
     </scroll-view>
 
     <scroll-view class="right-content" scroll-y="{{isScroll}}" scroll-into-view="{{toView}}" scroll-with-animation="true"
-      scroll-top="{{scrollTop}}">
+      scroll-top="{{scrollTop}}" bindscroll="scrollHandle">
       <!-- 右侧banner -->
       <view class="banner" wx:for="{{banner}}" wx:key="index">
         <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150" />
@@ -120,8 +120,10 @@
   <view class="shopping-bag clearfix" wx:if="{{orderNum}}">
     <!-- 下方购物袋所选产品表 -->
     <view class="shopping-detail" wx:if="{{isShowDetail}}">
-      <view class="clear" bindtap="clearShoppingList">
-        <text class="iconfont icon-shanchu"></text>清空购物袋
+      <view class="clear clearfix">
+        <view class="clear-point" bindtap="clearShoppingList">
+          <text class="iconfont icon-shanchu"></text>清空购物袋
+        </view>        
         <text class="iconfont icon-xiaoguanbi close" bindtap="hide"></text>
       </view>
       <view class="alertBox" wx:if="{{isExceed}}">
@@ -143,9 +145,10 @@
             <view class="discount" wx:if="{{item.oldPri}}">￥{{item.oldPri}}</view>  
           </view>
           <view class="item-right">
-            <view class="select">
-              <text class="iconfont icon-jian-tianchong mins" bindtap="minsNum"></text><text class="nums">{{item.num}}</text><text
-                class="iconfont icon-jia-tianchong add" bindtap="addNum"></text>
+            <!-- 加减按钮 -->
+            <view class="select" bindtap="anotherPlus"  data-pid="{{item.pid}}" data-specid="{{item.specId}}" data-idx="{{index}}">
+              <text class="iconfont icon-jian-tianchong mins" data-plus="-1"></text><text class="nums">{{item.num}}</text><text
+                class="iconfont icon-jia-tianchong add" data-plus="1"></text>
             </view>
           </view>
         </view>                

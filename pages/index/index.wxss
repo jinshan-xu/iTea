@@ -418,6 +418,10 @@ page, .main {
   top: 2px;
 }
 
+.shopping-bag .clear-point {
+  float: left;
+}
+
 .shopping-bag .alertBox {
   padding: .2rem 0;
   background-color: #fac7cf;

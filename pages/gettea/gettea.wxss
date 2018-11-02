@@ -1,20 +1,48 @@
-/* pages/gettea/gettea.wxss */
-.scroll-view-item{
+page {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  background-color: #efefef;
+}
+
+.not-order {
+  background-color: #fcfcfc;
+  border-radius: 1em;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.not-order .img {
+  width: 250rpx;
+  height: 250rpx;
+  margin: 200rpx auto 50rpx;
+}
+
+.not-order image {
   width: 100%;
-  height: 200px;
-}
-.bc_green{
-  background-color: green;
+  height: 100%;
 }
 
-.bc_red{
-  background-color: red;
+.not-order .remind-word {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  margin-top: .2rem;
 }
 
-.bc_yellow{
-  background-color: yellow;
+.not-order button {
+  position: absolute;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+  background-color: #C6834E;
+  color: #fff;
+  margin-top: 1rem;
+  width: 400rpx;
 }
-
-.bc_blue{
-  background-color: blue;
-}
+/*# sourceMappingURL=gettea.wxss.map */

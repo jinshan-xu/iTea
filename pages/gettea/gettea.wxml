@@ -1,2 +1,17 @@
 <!--pages/gettea/gettea.wxml-->
-<text>pages/gettea/gettea.wxml</text>
+<view class="container">
+<view wx:if="{{!hasOrder}}" class="not-order">
+  <view class="img">
+    <image src="../../assets/images/wait/wait.jpg" aspectFill lazy-load width="375" height="150" />  
+  </view>
+  <view class="remind">
+    <view class="remind-word">
+      您今天还没有下单
+    </view> 
+    <view class="remind-word">
+      快去选择一杯喜欢的茶吧
+    </view>
+  </view>
+  <button type="default" size="mini" bindtap="toIndexPage" hover-class="defaultTap">去点餐</button>
+</view>
+</view>
