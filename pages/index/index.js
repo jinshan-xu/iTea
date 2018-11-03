@@ -94,6 +94,17 @@ Page({
       curIndex: e.target.dataset.index
     });
   },
+  pay(){    
+    this.setData({
+      isShowSpecBox: false,
+      isShowMask: false
+    });
+    var data = this.getDetailList();
+    var dataStr = JSON.stringify(data);    
+    wx.navigateTo({
+      url: '../pay/pay?data=' + dataStr + '&totalPrice=' + this.data.totalPrice + '&orderNum=' + this.data.orderNum
+    });
+  },
   classProList: function (list) {
     var arr = {};
     var type = '';

@@ -1,0 +1,103 @@
+<!--pages/pay/pay.wxml-->
+<view class="container">
+  <!-- 地址 -->
+  <view class="addr">
+    <view class="shop">龙华九方店<text class="iconfont icon-youjiantou"></text></view>
+    <view class="distance gray-word">
+      距您步行4500米
+    </view>
+  </view>
+  <!-- 取货方式 -->
+  <view class="way">
+    <view class="self {{isSelfGet ? 'active' : ''}}" data-way="self" bindtap="getWay">
+      <text class="iconfont icon-mendian"></text><text>门店自取</text>
+    </view>
+    <view class="takeaway {{!isSelfGet ? 'active' : ''}}" data-way="takeaway" bindtap="getWay">
+      <text class="iconfont icon-waimai"></text><text>外卖配送</text>
+    </view>
+  </view>
+  <!-- 取货时间 -->
+  <view class="time info" wx:if="{{isSelfGet}}">
+    <view class="now left">立即取茶</view>
+    <view class="confirm-time right gray-word">预计等待20分钟以上<text class="iconfont icon-youjiantou"></text></view>
+  </view>
+  <!-- 选择收货地址 -->
+  <view class="info" wx:if="{{!isSelfGet}}">
+    <view class="left">
+      外卖配送
+    </view>
+    <view class="right">
+      选择收货地址<text class="iconfont icon-youjiantou"></text>
+    </view>
+  </view>
+  <!-- 手机 -->
+  <view class="phone">
+    <view>
+      <text class="iconfont icon-tel"></text><text class="gray-word">为确保能通知您取茶，请预留手机号</text>
+    </view>
+    <view class="auto-fill">
+      自动填写
+    </view>
+  </view>
+  <!-- 商品明细 -->
+  <view class="title gray-word">
+      商品明细 <text class="iconfont icon-xiajiantou2"></text>
+  </view>
+  <scroll-view class="list" scroll-y="true">    
+    <view class="list-item" wx:for="{{proList}}" wx:key="index" data-pid="item.pid" data-specid="item.specId">
+      <view class="content">
+        <view class="name {{item.oldPri ? 'discount-name' : ''}}">
+          {{item.title}}
+        </view>
+        <view class="spec-content gray-word" wx:if="{{item.specStr}}">
+          {{item.specStr}}
+        </view>
+      </view>
+      <view class="num">
+        x <text>{{item.num}}</text>
+      </view>
+      <view class="price">
+        <view class="new-pri"> 
+          ￥<text>{{item.price}}</text>
+        </view>
+        <view class="old-pri gray-word" wx:if="{{item.oldPri}}">
+          ￥<text>{{item.oldPri}}</text>
+        </view>
+      </view>
+    </view>    
+  </scroll-view>
+  <!-- 配送费 -->
+  <view class="trans-fee info" wx:if="{{!isSelfGet}}">
+    <view class="fee left">
+      配送费
+    </view>
+    <view class="fee-num right gray-word">
+      ￥5.00
+    </view>
+  </view>
+  <!-- 优惠卷 -->
+  <view class="discount info">
+    <view class="ticket left">喜茶券</view> 
+    <view class="ticket-info right gray-word">
+      暂无可用<text class="iconfont icon-youjiantou"></text>  
+    </view>
+  </view>
+  <!-- 合计 -->
+  <view class="total gray-word">
+    <text>共1个商品，小计：</text><text class="total-price">￥25</text>  
+  </view>
+  <!-- 备注 -->
+  <view class="backup info">
+    <view class="left">
+      备注
+    </view>
+    <view class="right gray-word" bindtap="">
+      亲~ 请备注您的要求<text class="iconfont icon-youjiantou"></text>
+    </view>
+  </view>
+  <!-- 付款按钮 -->
+  <view class="pay">
+
+  </view>
+
+</view>

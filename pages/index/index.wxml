@@ -134,7 +134,7 @@
         <view class="p-item" wx:for="{{listDetail}}" wx:key="index">
         <!--  -->
           <view class="thumbnail">
-            <image src="https://myserver.applinzi.com/{{item.img}}" />
+            <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150"  />
           </view>
           <view class="item-left">
             <text class="item-title">{{item.title}}</text>
@@ -159,7 +159,7 @@
       <text class="iconfont icon-iconset0316"></text><text>购物车</text>
       <text class="num {{bgColor}}">{{orderNum}}</text>
     </view>
-    <view class="submit">
+    <view class="submit" bindtap="pay">
       <text>结 算</text>
     </view>
     <view class="total-price">

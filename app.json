@@ -1,10 +1,13 @@
 {
-  "pages": [
+  "pages": [    
+    "pages/pay/pay",
+    "pages/index/index",    
+    
     "pages/gettea/gettea",
-    "pages/index/index",
-    "pages/test/test",        
+    "pages/test/test",
     "pages/logs/logs",
-    "pages/user/user"    
+    "pages/user/user"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
