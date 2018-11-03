@@ -22,12 +22,13 @@ Page({
     bgColor: "normal",
     isShowSpecBox: false,
     isShowMask: false,
+    isShowDetailBox: false,  // 是否显示商品详情框
+    isShowExceedBox: false,  // 是否超过 10 杯
     chosePro: {}, // 当前被选中的商品
     addToShopBtn: true, // 是否显示 加入购物车按钮
     specNum: 0, // 已经完成规格选取的商品
     disCountPrice: 0, // 大杯的加价
-    price: 0, // 选规格商品的单价
-    isExceed: false, // 是否超过 10 杯
+    price: 0, // 选规格商品的单价    
     isShowDetail: false, // 是否显示购物详情
     listDetail: [], // 购物车内商品详情
     query: null
@@ -126,12 +127,25 @@ Page({
       bgColor: n > 0 ? "alertNum" : "normal"
     });
   },
-  plus(e) {
+  showDetailBox(e){
+    var pid = e.currentTarget.dataset.pid;
+    this.addChosePro(pid);  // 创建 chosePro
+    var price = this.getPrice();     // 获取商品 price    
+    this.setData({
+      isShowMask: true,
+      isShowDetailBox: true,
+      price
+    });
+  },
+  plus(e) {    
     var pid = e.currentTarget.dataset.pid;
     var plus = e.target.dataset.plus;
     var shoppingList = this.data.shoppingList;
     var price = e.currentTarget.dataset.price;
     if (plus == 1) {
+      if(this.checkNum()){
+        return;
+      }
       if (shoppingList[pid]) {
         shoppingList[pid].add.num++;
       } else {
@@ -183,10 +197,10 @@ Page({
     this.setData({
       isShowMask: true,
       isShowSpecBox: true,
+      isShowDetailBox: false,
       chosePro: proObj, // chosePro 保存当前被选中的商品     
       disCountPrice: price
     });
-
     var price = this.getPrice();
     var idKey = this.getKey();
     // 首先判断此商品以及默认规格是否已经被添加进入 shoppingList        
@@ -195,7 +209,6 @@ Page({
       specNum: this.getSpecNum(idKey),
       price
     });
-
   },
   alterSlectedProSpec(pid, proObj) { // 构建商品规格对象    
     var selectedProSpec = {};
@@ -214,10 +227,12 @@ Page({
     this.setData({
       isShowMask: false,
       isShowSpecBox: false,
-      isShowDetail: false
+      isShowDetail: false,
+      isShowDetailBox: false
     });
   },
   addToShop() {
+    if(this.checkNum()){ return; }
     // 在选择规格页面点击 添加进购物车
     var pid = this.data.chosePro.pid;
     var shoppingList = this.data.shoppingList;
@@ -318,13 +333,14 @@ Page({
       return 0;
     }
   },
-  alterSpecNum(e) { // 修改选定规格的商品的个数    
+  alterSpecNum(e) { // 修改选定规格的商品的个数        
     var pid = this.getChoseProId();
     var idKey = this.getKey();
     var shoppingList = this.data.shoppingList;
     var num = shoppingList[pid][idKey].num;
     var plus = e.target.dataset.plus;
     if (plus == 1) { // 如果是 +
+      if(this.checkNum()){ return; }
       num++;
       shoppingList[pid][idKey].num++;
     }
@@ -393,6 +409,7 @@ Page({
       isShowMask: true,
       isShowSpecBox: false,
       isShowDetail: true,
+      isShowDetailBox: false,
       listDetail: arr
     });
   },
@@ -445,8 +462,8 @@ Page({
     }
     return arr;
   },
-  anotherPlus(e) { // 在购物列表中重新新加数据
-    var plus = e.target.dataset.plus;
+  anotherPlus(e) { // 在购物列表中重新新加数据    
+    var plus = e.target.dataset.plus;    
     var pid = e.currentTarget.dataset.pid;
     var specId = e.currentTarget.dataset.specid;
     var idx = e.currentTarget.dataset.idx;
@@ -494,6 +511,7 @@ Page({
     }
     if (plus == '1') { // 点击 加
       // 需要个数
+      if(this.checkNum()){ return; }
       listDetail[idx].num++;
       orderNum++;
       proTotal[pid]++;
@@ -511,5 +529,30 @@ Page({
       totalPrice,
       shoppingList
     });
+  },
+  addChosePro(pid){  // 创建 chosePro
+    var proObj = this.getObj(pid); // 获取当前选中的商品信息         
+    this.setData({
+      chosePro: proObj
+    });
+  },
+  checkNum(){
+    var total = this.data.orderNum;
+    if(total >= 10){
+      if(!this.data.isShowExceedBox){
+        this.setData({
+          isShowExceedBox: true
+        });
+        setTimeout(()=>{
+          this.setData({
+            isShowExceedBox: false
+          });
+        },2000)
+      }      
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 })

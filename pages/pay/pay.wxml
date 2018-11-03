@@ -1,4 +1,5 @@
 <!--pages/pay/pay.wxml-->
+<scroll-view scroll-y="true">
 <view class="container">
   <!-- 地址 -->
   <view class="addr">
@@ -84,7 +85,7 @@
   </view>
   <!-- 合计 -->
   <view class="total gray-word">
-    <text>共1个商品，小计：</text><text class="total-price">￥25</text>  
+    <text>共{{totalNum}}个商品，小计：</text><text class="total-price">￥{{totalPrice}}</text>  
   </view>
   <!-- 备注 -->
   <view class="backup info">
@@ -97,7 +98,14 @@
   </view>
   <!-- 付款按钮 -->
   <view class="pay">
-
+    <view class="pay-num">
+      <view>￥{{totalPrice}}</view>
+      <view class="disCount-num" wx:if="{{disCountPrice != 0}}">已优惠 ￥{{disCountPrice}}</view>
+    </view>
+    <view class="pay-btn">
+      <text>支 付</text>
+    </view>
   </view>
-
+  <view class="white"></view>
 </view>
+</scroll-view>

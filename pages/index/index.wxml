@@ -14,7 +14,7 @@
   <view class="mask" wx:if="{{isShowMask}}" bindtap="hide"></view>
 
   <view class="main-info">
-
+    <!-- 左侧list -->
     <scroll-view class="left-list" scroll-y>
       <view class="left-item {{curIndex == index ? 'active' : ''}}" wx:for="{{leftList}}" wx:key="index" bindtap="switchTab"
         data-index="{{index}}" data-type="{{item.type}}">
@@ -36,7 +36,7 @@
           <text class="name">{{val.data[0].cname}}</text><text class="iconfont icon-{{val.data[0].icon_name}}"></text>
         </view>
         <!-- 产品详情 -->
-        <view class="content-item" wx:for="{{val.data}}" wx:key="index">
+        <view class="content-item" wx:for="{{val.data}}" wx:key="index" data-pid="{{item.pid}}" bindtap="showDetailBox">
           <!-- 产品小图片 -->
           <view class="image">
             <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150" />
@@ -57,11 +57,11 @@
                   wx:if="{{item.dis_count != 1}}">￥{{item.new_price}}</text>
               </view>
               <!-- 点击按钮 -->
-              <view class="select" data-pid="{{item.pid}}" bindtap="plus" data-price="{{item.new_price}}">
-                <view>
+              <view class="select" data-pid="{{item.pid}}" catchtap="plus" data-price="{{item.new_price}}">
+                <view wx:if="{{item.chos_spec == 0}}">
                   <text class="iconfont icon-jian-tianchong mins" data-plus="-1" wx:if="{{shoppingList[item.pid]}}"></text><text
-                    class="nums" wx:if="{{shoppingList[item.pid]}}">{{shoppingList[item.pid].add.num}}</text><text class="iconfont icon-jia-tianchong add"
-                    data-plus="1" wx:if="{{item.chos_spec == 0}}"></text>
+                    class="nums" wx:if="{{shoppingList[item.pid]}}">{{shoppingList[item.pid].add.num}}</text><text
+                    class="iconfont icon-jia-tianchong add" data-plus="1"></text>
                 </view>
                 <!-- 选规格按钮 -->
                 <view class="spec-btn" wx:if="{{item.chos_spec == 1}}">
@@ -88,11 +88,12 @@
             </view>
             <view class="spec-content" data-specid="{{key}}" bindtap="confirmSpec">
               <view class="spec-item" wx:for="{{selectedProSpec[key].arr}}" wx:key="index">
-                <text data-index="{{index}}" class="{{index==selectedProSpec[key].selectIndex? 'selected' : ''}}" wx:if="{{index > 0}}" data-idx="{{index}}">{{item}} <text wx:if="{{key == 'spec' && index == 2}}" class="discount-price">￥{{disCountPrice}}</text></text>                
+                <text data-index="{{index}}" class="{{index==selectedProSpec[key].selectIndex? 'selected' : ''}}" wx:if="{{index > 0}}"
+                  data-idx="{{index}}">{{item}} <text wx:if="{{key == 'spec' && index == 2}}" class="discount-price">￥{{disCountPrice}}</text></text>
                 <text class="iconfont icon-xingxing star {{index == 1 ? 'selected' : ''}}" wx:if="{{index == 1}}"></text>
               </view>
             </view>
-          </view> 
+          </view>
         </scroll-view>
         <!-- 价格及点击按钮 -->
         <view class="price">
@@ -103,9 +104,8 @@
           <!-- 点击按钮 -->
           <view class="select">
             <view wx:if="{{!addToShopBtn}}" bindtap="alterSpecNum">
-              <text class="iconfont icon-jian-tianchong mins" data-plus="-1"></text><text
-                class="nums">{{specNum}}</text><text class="iconfont icon-jia-tianchong add"
-                data-plus="1"></text>
+              <text class="iconfont icon-jian-tianchong mins" data-plus="-1"></text><text class="nums">{{specNum}}</text><text
+                class="iconfont icon-jia-tianchong add" data-plus="1"></text>
             </view>
             <!-- 选规格按钮 -->
             <view class="spec-add" wx:if="{{addToShopBtn}}" bindtap="addToShop">
@@ -115,7 +115,45 @@
         </view>
       </view>
     </scroll-view>
-  </view>  
+  </view>
+  <!-- 单击 图片/商品名 显示商品详情 -->
+  <view class="pro-detail-box" wx:if="{{isShowDetailBox}}">
+    <view class="close">
+      <text class="iconfont icon-xiaoguanbi" bindtap="hide"></text>
+    </view>
+    <view class="img">
+      <image src="https://myserver.applinzi.com/{{chosePro.img}}" aspectFill lazy-load width="375" height="150" />
+    </view>
+    <view class="name">
+      {{chosePro.name}}
+    </view>
+    <view class="pro-detail">
+      {{chosePro.description}}
+    </view>
+    <view class="price">
+      <view>
+        <text class="new">￥{{price}}</text><text class="old" wx:if="{{chosePro.dis_count != 1}}">￥{{chosePro.new_price}}</text>  
+      </view>      
+      <!-- 点击按钮 -->
+      <view class="select" data-pid="{{chosePro.pid}}" catchtap="plus" data-price="{{chosePro.new_price}}">
+        <view wx:if="{{chosePro.chos_spec == 0}}">
+          <text class="iconfont icon-jian-tianchong mins" data-plus="-1" wx:if="{{shoppingList[chosePro.pid]}}"></text><text
+            class="nums" wx:if="{{shoppingList[chosePro.pid]}}">{{shoppingList[chosePro.pid].add.num}}</text><text class="iconfont icon-jia-tianchong add"
+            data-plus="1"></text>
+        </view>
+        <!-- 选规格按钮 -->
+        <view class="spec-btn" wx:if="{{chosePro.chos_spec == 1}}">
+          <text catchtap="choseSpec" data-pid="{{chosePro.pid}}">选规格</text><text class="spec-btn-num" wx:if="{{proTotal[chosePro.pid]}}">{{proTotal[chosePro.pid]}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 超出10杯提醒 -->
+  <view class="num-exceed" wx:if="{{isShowExceedBox}}">
+    <text class="iconfont icon-tishi"></text><text>单笔订单限点 10 杯</text>
+  </view>
+
   <!-- 下方购物袋 -->
   <view class="shopping-bag clearfix" wx:if="{{orderNum}}">
     <!-- 下方购物袋所选产品表 -->
@@ -123,18 +161,18 @@
       <view class="clear clearfix">
         <view class="clear-point" bindtap="clearShoppingList">
           <text class="iconfont icon-shanchu"></text>清空购物袋
-        </view>        
+        </view>
         <text class="iconfont icon-xiaoguanbi close" bindtap="hide"></text>
       </view>
-      <view class="alertBox" wx:if="{{isExceed}}">
+      <view class="alertBox" wx:if="{{isShowExceedBox}}">
         单笔订单限购10杯
       </view>
       <!-- 下方购物袋产品列表 -->
       <scroll-view class="shopping-list" scroll-y="true">
         <view class="p-item" wx:for="{{listDetail}}" wx:key="index">
-        <!--  -->
+          <!--  -->
           <view class="thumbnail">
-            <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150"  />
+            <image src="https://myserver.applinzi.com/{{item.img}}" aspectFill lazy-load width="375" height="150" />
           </view>
           <view class="item-left">
             <text class="item-title">{{item.title}}</text>
@@ -142,16 +180,16 @@
           </view>
           <view class="price">
             <view class="new">￥{{item.price}}</view>
-            <view class="discount" wx:if="{{item.oldPri}}">￥{{item.oldPri}}</view>  
+            <view class="discount" wx:if="{{item.oldPri}}">￥{{item.oldPri}}</view>
           </view>
           <view class="item-right">
             <!-- 加减按钮 -->
-            <view class="select" bindtap="anotherPlus"  data-pid="{{item.pid}}" data-specid="{{item.specId}}" data-idx="{{index}}">
+            <view class="select" bindtap="anotherPlus" data-pid="{{item.pid}}" data-specid="{{item.specId}}" data-idx="{{index}}">
               <text class="iconfont icon-jian-tianchong mins" data-plus="-1"></text><text class="nums">{{item.num}}</text><text
                 class="iconfont icon-jia-tianchong add" data-plus="1"></text>
             </view>
           </view>
-        </view>                
+        </view>
       </scroll-view>
     </view>
     <!-- 下方购物袋图标 -->

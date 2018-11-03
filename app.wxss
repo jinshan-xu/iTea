@@ -19,14 +19,13 @@
 
 
 /* iconfont */
-
 @font-face {
   font-family: 'iconfont';  /* project id 884342 */
-  src: url('//at.alicdn.com/t/font_884342_urp66gmckbg.eot');
-  src: url('//at.alicdn.com/t/font_884342_urp66gmckbg.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_884342_urp66gmckbg.woff') format('woff'),
-  url('//at.alicdn.com/t/font_884342_urp66gmckbg.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_884342_urp66gmckbg.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_884342_l4kpq3rgjz.eot');
+  src: url('//at.alicdn.com/t/font_884342_l4kpq3rgjz.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_884342_l4kpq3rgjz.woff') format('woff'),
+  url('//at.alicdn.com/t/font_884342_l4kpq3rgjz.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_884342_l4kpq3rgjz.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -40,6 +39,8 @@
 .icon-waimai:before { content: "\e618"; }
 
 .icon-xingxing:before { content: "\e62b"; }
+
+.icon-lingdang:before { content: "\e61d"; }
 
 .icon-iconset0316:before { content: "\e6d7"; }
 
@@ -56,6 +57,8 @@
 .icon-wuuiconsuoxiao:before { content: "\e61f"; }
 
 .icon-tel:before { content: "\e641"; }
+
+.icon-tishi:before { content: "\e62a"; }
 
 .icon-shuiguo:before { content: "\e662"; }
 

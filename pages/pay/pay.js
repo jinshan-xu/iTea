@@ -9,20 +9,20 @@ Page({
     totalNum: 0,  // 总数
     totalPrice: 0,  // 总价
     isSelfGet: true, // 是否自取
-
+    disCountPrice: 0 // 总共优惠金额
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    // var proList = JSON.parse(options.data);
-    // var orderNum = options.orderNum;
-    // var totalPrice = options.totalPrice;
-    // this.setData({
-    //   proList, orderNum, totalPrice
-    // });
+    var proList = JSON.parse(options.data);
+    var orderNum = options.orderNum;
+    var totalPrice = options.totalPrice;
+    var disCountPrice = this.getDisPri(proList);    
+    this.setData({
+      proList, orderNum, totalPrice, disCountPrice
+    });
     wx.navigateTo({
       url: '../index/index'
     })
@@ -91,5 +91,14 @@ Page({
     this.setData({
       isSelfGet: flag
     });
+  },
+  getDisPri(arr){  // 计算应付金额
+    var disCountPrice = 0;
+    console.log(arr);
+    for(let item of arr){
+      var price = item.oldPri == 0 ? item.price : item.oldPri;
+      disCountPrice += parseFloat(price - item.price) * item.num;      
+    }    
+    return disCountPrice.toFixed(1);
   }
 })
