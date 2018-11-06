@@ -1,13 +1,16 @@
 {
-  "pages": [    
-    "pages/index/index", 
-    "pages/pay/pay",    
-
+  "pages": [
+    "pages/addrMap/addrMap",
+    "pages/addAddr/addAddr",
+    "pages/addr/addr",
+    "pages/pay/pay",
+    "pages/remark/remark",
+    "pages/index/index",
+    "pages/ticket/ticket",
     "pages/gettea/gettea",
     "pages/test/test",
     "pages/logs/logs",
     "pages/user/user"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

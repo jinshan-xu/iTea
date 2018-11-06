@@ -1,0 +1,50 @@
+<!--pages/addAddr/addAddr.wxml-->
+<view class="main">
+  <view class="item">
+    <view class="title">
+      联系人：
+    </view>
+    <view class="info-input">
+      <input type="text" placeholder="请输入收货人姓名" auto-focus />
+    </view>
+  </view>
+  <view class="item">
+    <view class="title">
+      性别：
+    </view>
+    <view class="info-input">
+      <radio-group class="sex">
+        <label class="sex-label" wx:for="{{sex}}" wx:key="index">
+          <radio value="item.value" checked="{{item.isChecked}}" color="#000" class="sex-input"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="item">
+    <view class="title">
+      手机号：
+    </view>
+    <view class="info-input">
+      <input type="number" placeholder="请输入收货人电话" maxlength="11" />
+    </view>
+  </view>
+  <view class="item">
+    <view class="title">
+      收货地址：
+    </view>
+    <view class="info-input addr" bindtap="toAddrMap">
+      收货地址<text class="iconfont icon-youjiantou"></text>
+    </view>
+  </view>
+  <view class="item">
+    <view class="title">
+      门牌号：
+    </view>
+    <view class="info-input">
+      <input type="text" placeholder="例如:B座6楼606" />
+    </view>
+  </view>
+  <view class="confirm-btn item">
+    完成
+  </view>
+</view>

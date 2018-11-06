@@ -1,0 +1,16 @@
+<!--pages/remark/remark.wxml-->
+<view class="main">
+  <view class="remark-input">
+    <textarea value="{{showVal? val:plchoe}}" maxlength="50" bindinput="countLen" bindfocus="dataIn" bindblur="handleBlur"/>  
+    <text class="max-len">{{len}}/50</text>
+  </view>
+  <view class="p-label">
+    <text class="title">快捷标签</text>
+    <view bindtap="addLabel">
+      <text wx:for="{{label}}" wx:key="index" data-content="{{item.content}}" data-idx="{{index}}" class="box {{item.active}}" >{{item.content}}</text>
+    </view>
+  </view>
+  <view class="btn" bindtap="toPay">
+    完成
+  </view>  
+</view>

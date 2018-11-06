@@ -1,0 +1,14 @@
+<!--pages/addr/addr.wxml-->
+<view class="main">
+  <view wx:if="{{!hasAddr}}" class="alert-info">
+    <view>
+      暂无地址信息
+    </view>
+    <view>
+      请点击底部按钮添加地址信息
+    </view>
+    <view class="btn-container">
+      <button type="default" size="defaultSize" bindtap="addAddrBtn"  hover-class="defaultTap"  class="add-addr-btn">+ 添加地址</button>
+    </view>
+  </view>  
+</view>

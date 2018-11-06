@@ -6,26 +6,27 @@ Page({
    */
   data: {
     proList: [],  // 订单列表
-    totalNum: 0,  // 总数
+    orderNum: 0,  // 总数
     totalPrice: 0,  // 总价
     isSelfGet: true, // 是否自取
-    disCountPrice: 0 // 总共优惠金额
+    disCountPrice: 0, // 总共优惠金额
+    phone: undefined
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var proList = JSON.parse(options.data);
-    var orderNum = options.orderNum;
-    var totalPrice = options.totalPrice;
-    var disCountPrice = this.getDisPri(proList);    
-    this.setData({
-      proList, orderNum, totalPrice, disCountPrice
-    });
-    wx.navigateTo({
-      url: '../index/index'
-    })
+    // var proList = JSON.parse(options.data);
+    // var orderNum = options.orderNum;
+    // var totalPrice = options.totalPrice;
+    // var disCountPrice = this.getDisPri(proList);    
+    // this.setData({
+    //   proList, orderNum, totalPrice, disCountPrice
+    // });
+    // wx.navigateTo({
+    //   url: '../index/index'
+    // })
   },
 
   /**
@@ -100,5 +101,19 @@ Page({
       disCountPrice += parseFloat(price - item.price) * item.num;      
     }    
     return disCountPrice.toFixed(1);
+  },
+  toTicket(){
+    wx.navigateTo({
+      url: '../ticket/ticket'
+    })
+  },
+  toRemark(){
+    wx.navigateTo({
+      url: '../remark/remark'
+    })
+  },
+  getPhoNum(e){
+    var num = e.detail.value;
+    console.log(num);
   }
 })

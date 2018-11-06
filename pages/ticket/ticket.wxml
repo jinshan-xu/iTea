@@ -1,0 +1,7 @@
+<!--pages/ticket/ticket.wxml-->
+<view class="main">
+  <image src="../../assets/images/ticket/noTicket.jpg" aspectFill lazy-load width="375" height="150"/>
+  <view class="info-show">
+    暂无可用优惠券
+  </view>
+</view>

@@ -75,7 +75,17 @@
     font-size: 12px;
     padding: .5rem;
     border-bottom: 1px solid #efefef;
-
+    .fill-phone{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .pho-num{
+      flex-grow: 1;
+    }
     .iconfont {
       margin-right: .5rem;
     }

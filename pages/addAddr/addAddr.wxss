@@ -1,0 +1,88 @@
+page {
+  background-color: #efefef;
+}
+
+.main {
+  padding: 1rem .5rem .5rem;
+  background-color: #fff;
+}
+
+.main .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: .5rem 0;
+}
+
+.main .title {
+  width: 150rpx;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.main .info-input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.main .info-input input {
+  font-size: 12px;
+  padding: 0 .3rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #acacac;
+}
+
+.main .info-input .sex {
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.main .info-input .sex-label {
+  margin-right: .5rem;
+}
+
+.main .info-input .sex-input {
+  font-size: 12px;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+  position: relative;
+  top: -.1em;
+  right: -.2em;
+}
+
+.main .addr {
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+  text-align: right;
+  color: #999;
+}
+
+.main .addr .iconfont {
+  font-size: 12px;
+}
+
+.main .confirm-btn {
+  text-align: center;
+  background-color: #C6834E;
+  font-size: 12px;
+  color: #fff;
+  padding: .5rem 0;
+  border-radius: .2em;
+}
+/*# sourceMappingURL=addAddr.wxss.map */

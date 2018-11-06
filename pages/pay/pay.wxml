@@ -33,8 +33,8 @@
   </view>
   <!-- 手机 -->
   <view class="phone">
-    <view>
-      <text class="iconfont icon-tel"></text><text class="gray-word">为确保能通知您取茶，请预留手机号</text>
+    <view class="fill-phone">
+      <text class="iconfont icon-tel"></text><input type="number" placeholder="为了能通知您取茶,请输入手机号" maxlength="11" placeholder-style="font-size: 12px;color: #999;" class="pho-num" bindblur="getPhoNum"/>
     </view>
     <view class="auto-fill">
       自动填写
@@ -77,7 +77,7 @@
     </view>
   </view>
   <!-- 优惠卷 -->
-  <view class="discount info">
+  <view class="discount info" bindtap="toTicket">
     <view class="ticket left">喜茶券</view> 
     <view class="ticket-info right gray-word">
       暂无可用<text class="iconfont icon-youjiantou"></text>  
@@ -85,10 +85,10 @@
   </view>
   <!-- 合计 -->
   <view class="total gray-word">
-    <text>共{{totalNum}}个商品，小计：</text><text class="total-price">￥{{totalPrice}}</text>  
+    <text>共{{orderNum}}个商品，小计：</text><text class="total-price">￥{{totalPrice}}</text>  
   </view>
   <!-- 备注 -->
-  <view class="backup info">
+  <view class="backup info" bindtap="toRemark">
     <view class="left">
       备注
     </view>
@@ -96,7 +96,7 @@
       亲~ 请备注您的要求<text class="iconfont icon-youjiantou"></text>
     </view>
   </view>
-  <!-- 付款按钮 -->
+  <!-- 付款按钮 -->  
   <view class="pay">
     <view class="pay-num">
       <view>￥{{totalPrice}}</view>

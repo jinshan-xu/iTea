@@ -1,0 +1,13 @@
+/* pages/ticket/ticket.wxss */
+.main{
+  text-align: center;
+}
+.main image{
+  margin-top: 100rpx;  
+  width: 250rpx;
+  height: 250rpx;  
+}
+.info-show{
+  font-size: 12px;
+  text-align: center;
+}
