@@ -5,7 +5,7 @@
       联系人：
     </view>
     <view class="info-input">
-      <input type="text" placeholder="请输入收货人姓名" auto-focus />
+      <input type="text" placeholder="请输入收货人姓名" auto-focus maxlength="8"/>
     </view>
   </view>
   <view class="item">
@@ -33,7 +33,7 @@
       收货地址：
     </view>
     <view class="info-input addr" bindtap="toAddrMap">
-      收货地址<text class="iconfont icon-youjiantou"></text>
+      点击选择收货地址<text class="iconfont icon-youjiantou"></text>
     </view>
   </view>
   <view class="item">
@@ -41,10 +41,10 @@
       门牌号：
     </view>
     <view class="info-input">
-      <input type="text" placeholder="例如:B座6楼606" />
+      <input type="text" placeholder="例如:B座6楼606" maxlength="20"/>
     </view>
   </view>
   <view class="confirm-btn item">
-    完成
+    保存
   </view>
 </view>

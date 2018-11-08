@@ -2,19 +2,20 @@ page{
   background-color: #efefef;
 }
 .main{
-  padding: 1rem .5rem .5rem;
+  padding: .5rem;
   background-color: #fff;
   .item{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: .5rem 0;    
+    margin: .8rem 0;    
+    border-bottom: 1px solid #efefef;
   }
   .title{
-    width: 150rpx;
+    min-width: 150rpx;    
     height: 24px;
     line-height: 24px;
-    font-size: 12px;
+    font-size: 14px;
     text-align: right;        
   }
   .info-input{
@@ -25,8 +26,7 @@ page{
       box-sizing: border-box;
       width: 100%;
       height: 24px;
-      line-height: 24px;
-      border: 1px solid #acacac;
+      line-height: 24px;      
     }
     .sex{
       font-size: 12px;
@@ -47,17 +47,18 @@ page{
   .addr{
     font-size: 12px;
     height: 24px;
-    line-height: 24px;
-    text-align: right;
+    line-height: 24px;    
     color: #999;
+    padding-left: .3rem;
     .iconfont{
+      float: right;      
       font-size: 12px;      
     }
   }
   .confirm-btn{
     text-align: center;
     background-color: #C6834E;
-    font-size: 12px;
+    font-size: 14px;
     color: #fff;
     padding: .5rem 0;
     border-radius: .2em;    

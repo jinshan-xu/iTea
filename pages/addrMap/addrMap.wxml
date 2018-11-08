@@ -1,2 +1,27 @@
 <!--pages/addrMap/addrMap.wxml-->
+<!-- 4RABZ-ANNHS-RBYOC-6IZL2-DCYCT-HJB5G 地图KEY -->
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      style="width: 100%; height: 300px;"
+      latitude="{{location.latitude}}"
+      longitude="{{location.longitude}}"      
+      covers="{{covers}}"
+      bindregionchange="handleChange"
+      bindupdated="initRecPosi"
+      show-location      
+    ></map>
+    <view class="pointer">
+      <image src="../../assets/images/location/pointer.png" aspectFill lazy-load width="375" height="150"/>
+    </view>
+  </view>
 
+  <view class="rec-pos">
+    <view class="list-item" wx:for="{{recPos}}" wx:key="index" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" data-pid="{{item.id}}" data-id="{{index}}" bindtap="selectPos">
+      <text>{{item.title}}</text><text class="iconfont icon-xuanzhong" wx:if="{{index == selectedIdx}}"></text>
+    </view>  
+  </view>  
+</view>
+
+<!-- bindregionchange="handleChange" -->

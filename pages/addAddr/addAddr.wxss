@@ -3,7 +3,7 @@ page {
 }
 
 .main {
-  padding: 1rem .5rem .5rem;
+  padding: .5rem;
   background-color: #fff;
 }
 
@@ -18,14 +18,15 @@ page {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: .5rem 0;
+  margin: .8rem 0;
+  border-bottom: 1px solid #efefef;
 }
 
 .main .title {
-  width: 150rpx;
+  min-width: 150rpx;
   height: 24px;
   line-height: 24px;
-  font-size: 12px;
+  font-size: 14px;
   text-align: right;
 }
 
@@ -43,7 +44,6 @@ page {
   width: 100%;
   height: 24px;
   line-height: 24px;
-  border: 1px solid #acacac;
 }
 
 .main .info-input .sex {
@@ -69,18 +69,19 @@ page {
   font-size: 12px;
   height: 24px;
   line-height: 24px;
-  text-align: right;
   color: #999;
+  padding-left: .3rem;
 }
 
 .main .addr .iconfont {
+  float: right;
   font-size: 12px;
 }
 
 .main .confirm-btn {
   text-align: center;
   background-color: #C6834E;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   padding: .5rem 0;
   border-radius: .2em;

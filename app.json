@@ -1,14 +1,16 @@
 {
   "pages": [
     "pages/addrMap/addrMap",
+
+    "pages/test/test",
     "pages/addAddr/addAddr",
+    
     "pages/addr/addr",
     "pages/pay/pay",
     "pages/remark/remark",
     "pages/index/index",
     "pages/ticket/ticket",
     "pages/gettea/gettea",
-    "pages/test/test",
     "pages/logs/logs",
     "pages/user/user"
   ],
