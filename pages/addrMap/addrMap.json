@@ -1,1 +1,6 @@
-{}
+{  
+  "onReachBottomDistance": 10,
+  "navigationBarTitleText": "位置",
+  "navigationBarBackgroundColor": "#000",  
+  "navigationBarTextStyle": "#fff"  
+}

@@ -1,14 +1,17 @@
 {
   "pages": [
-    "pages/addrMap/addrMap",
+    "pages/index/index",
+
+    "pages/addAddr/addAddr",
 
     "pages/test/test",
-    "pages/addAddr/addAddr",
+
+    "pages/addrMap/addrMap",
+
     
     "pages/addr/addr",
     "pages/pay/pay",
     "pages/remark/remark",
-    "pages/index/index",
     "pages/ticket/ticket",
     "pages/gettea/gettea",
     "pages/logs/logs",
@@ -17,7 +20,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black"       
   },
   "tabBar": {
     "color": "#8a8a8a",
@@ -45,4 +48,5 @@
       }
     ]
   }
+
 }

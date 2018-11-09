@@ -1,27 +1,34 @@
 <!--pages/addrMap/addrMap.wxml-->
 <!-- 4RABZ-ANNHS-RBYOC-6IZL2-DCYCT-HJB5G 地图KEY -->
+<!-- 已经废弃此组件 -->
 <view class="page-body">
   <view class="page-section page-section-gap">
     <map
-      id="myMap"
-      style="width: 100%; height: 300px;"
+      id="myMap"      
       latitude="{{location.latitude}}"
       longitude="{{location.longitude}}"      
       covers="{{covers}}"
-      bindregionchange="handleChange"
-      bindupdated="initRecPosi"
+      bindregionchange="handleChange"      
+      circles="{{circles}}"
       show-location      
     ></map>
     <view class="pointer">
-      <image src="../../assets/images/location/pointer.png" aspectFill lazy-load width="375" height="150"/>
+      <image class="{{jump?'jump':''}}" src="../../assets/images/location/pointer.png" aspectFill lazy-load width="375" height="150"/>
     </view>
-  </view>
-
-  <view class="rec-pos">
-    <view class="list-item" wx:for="{{recPos}}" wx:key="index" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" data-pid="{{item.id}}" data-id="{{index}}" bindtap="selectPos">
-      <text>{{item.title}}</text><text class="iconfont icon-xuanzhong" wx:if="{{index == selectedIdx}}"></text>
-    </view>  
+    <view class="back-posi" bindtap="moveToLocation">
+      <text class="iconfont icon-78 active"></text>
+    </view>
   </view>  
+  
+  <scroll-view class="rec-pos" scroll-y   bindscrolltolower="getMorePosi">
+    <view wx:for="{{recPos}}" wx:key="index" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" data-pid="{{item.id}}" data-id="{{index}}" bindtap="selectPos" class="list-item {{index == selectedIdx ? 'highlight' : ''}}">
+      <text class="title">{{item.title}}</text><text class="iconfont icon-xuanzhong" wx:if="{{index == selectedIdx}}"></text>
+    </view>  
+
+    <button type="default" size="defaultSize" loading="loading" plain="plain}" disabled="disabled" bindtap="defaultTap"  id="wait-btn" wx:if="{{isShowWait}}">正在加载...</button>   
+    
+    <button type="default" size="defaultSize" plain="plain}" disabled="disabled" bindtap="defaultTap"  id="wait-btn" wx:if="{{isShowMsg}}">亲，已经到底了~</button>    
+  </scroll-view>  
 </view>
 
 <!-- bindregionchange="handleChange" -->

@@ -32,8 +32,8 @@
     <view class="title">
       收货地址：
     </view>
-    <view class="info-input addr" bindtap="toAddrMap">
-      点击选择收货地址<text class="iconfont icon-youjiantou"></text>
+    <view class="info-input addr" bindtap='onChangeAddress'>
+      <input type="text" placeholder="点击选择收货地址" value='{{chooseAddress}}'/><text class="iconfont icon-youjiantou"></text>
     </view>
   </view>
   <view class="item">

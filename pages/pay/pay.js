@@ -112,6 +112,11 @@ Page({
       url: '../remark/remark'
     })
   },
+  toAddAddr(){
+    wx.navigateTo({
+      url: '../addr/addr'
+    })
+  },
   getPhoNum(e){
     var num = e.detail.value;
     console.log(num);

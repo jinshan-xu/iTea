@@ -23,7 +23,7 @@
     <view class="confirm-time right gray-word">预计等待20分钟以上<text class="iconfont icon-youjiantou"></text></view>
   </view>
   <!-- 选择收货地址 -->
-  <view class="info" wx:if="{{!isSelfGet}}">
+  <view class="info" wx:if="{{!isSelfGet}}" bindtap="toAddAddr">
     <view class="left">
       外卖配送
     </view>

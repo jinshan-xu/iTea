@@ -57,5 +57,19 @@ Page({
         longitude:113.3345211,
       }]
     })
-  }
+  },
+  
+  onChangeAddress: function() {
+     var _page = this;
+      wx.chooseLocation({
+        success: function(res) {
+           _page.setData({
+             chooseAddress: res.name
+           });
+         },
+         fail: function(err) {
+           console.log(err)
+         }
+       });
+     }
 })
