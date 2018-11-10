@@ -66,12 +66,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      uname : app.globalData.userMsg.nickName,
-      sex : app.globalData.userMsg.gender
-    })
-    console.log(app.globalData.userMsg.nickName);
-    console.log(this.data.sex)
+    if(typeof app.globalData.userMsg == 'object'){      
+      this.setData({
+        uname : app.globalData.userMsg.nickName,
+        sex : app.globalData.userMsg.gender
+      })
+    }    
   },
 
   /**

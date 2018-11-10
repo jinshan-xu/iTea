@@ -1,6 +1,6 @@
 // pages/pay/pay.js
+var globalData = getApp().globalData;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -19,16 +19,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var proList = JSON.parse(options.data);
-    var orderNum = options.orderNum;
-    var totalPrice = options.totalPrice;
-    var disCountPrice = this.getDisPri(proList);    
-    this.setData({
-      proList, orderNum, totalPrice, disCountPrice
-    });
-    wx.navigateTo({
-      url: '../index/index'
-    })
+    
+    if(options.data){
+      // 是否从 index 页面传回来
+      var proList = JSON.parse(options.data);
+      var orderNum = options.orderNum;
+      var totalPrice = options.totalPrice;
+      var disCountPrice = this.getDisPri(proList);    
+      this.setData({
+        proList, orderNum, totalPrice, disCountPrice
+      });
+      // 将购物车商品信息保存到全局      
+      globalData.proList = proList;
+      globalData.orderNum = orderNum;
+      globalData.totalPrice = totalPrice;
+      globalData.disCountPrice = disCountPrice;
+    }
+    else{  // 否则向全局找数据
+      this.setData({
+        proList: globalData.proList, 
+        orderNum: globalData.orderNum,
+        totalPrice: globalData.totalPrice,          
+        disCountPrice: globalData.disCountPrice,
+        isSelfGet: globalData.isSelfGet
+      });
+    }
+
     if(options.userInfo){
       // 填写了地址
       var userInfo = JSON.parse(options.userInfo);
@@ -104,8 +120,7 @@ Page({
     });
   },
   getDisPri(arr){  // 计算应付金额
-    var disCountPrice = 0;
-    console.log(arr);
+    var disCountPrice = 0;    
     for(let item of arr){
       var price = item.oldPri == 0 ? item.price : item.oldPri;
       disCountPrice += parseFloat(price - item.price) * item.num;      
@@ -123,6 +138,7 @@ Page({
     })
   },
   toAddAddr(){
+    globalData.isSelfGet = false;
     wx.navigateTo({
       url: '../addr/addr'
     })
@@ -130,5 +146,22 @@ Page({
   getPhoNum(e){
     var num = e.detail.value;
     console.log(num);
+  },
+  pay(){
+    wx.requestPayment(
+      {
+      'timeStamp': '',
+      'nonceStr': '',
+      'package': '',
+      'signType': 'MD5',
+      'paySign': '',
+      'success':function(res){
+        
+      },
+      'fail':function(res){
+        
+      },
+      'complete':function(res){}
+      })
   }
 })

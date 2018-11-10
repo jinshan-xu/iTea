@@ -103,14 +103,14 @@ page{
   .title {
     color: #999;
     font-size: 12px;
-    padding: .5rem;
-    border-bottom: 1px solid #efefef;
+    padding: .5rem;    
   }
 
   .list {
     width: 100%;
     max-height: 350rpx;
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px dashed #acacac;
+    border-top: 1px dashed #acacac;
   }
 
   .list-item {
@@ -255,5 +255,9 @@ page{
       text-align: center;
       padding: 1rem 0;
     }
+  }
+  .white{
+    height: 300rpx;
+    background-color: #efefef;
   }
 }
