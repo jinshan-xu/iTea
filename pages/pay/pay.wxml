@@ -23,16 +23,16 @@
     <view class="confirm-time right gray-word">预计等待20分钟以上<text class="iconfont icon-youjiantou"></text></view>
   </view>
   <!-- 选择收货地址 -->
-  <view class="info" wx:if="{{!isSelfGet}}" bindtap="toAddAddr">
+  <view class="info" wx:if="{{!isSelfGet}}">
     <view class="left">
-      外卖配送
+      外卖下单
     </view>
     <view class="right">
-      选择收货地址<text class="iconfont icon-youjiantou"></text>
+      预计30分钟内送达<text class="iconfont icon-youjiantou"></text>
     </view>
   </view>
   <!-- 手机 -->
-  <view class="phone">
+  <view class="phone" wx:if="{{isSelfGet}}">
     <view class="fill-phone">
       <text class="iconfont icon-tel"></text><input type="number" placeholder="为了能通知您取茶,请输入手机号" maxlength="11" placeholder-style="font-size: 12px;color: #999;" class="pho-num" bindblur="getPhoNum"/>
     </view>
@@ -40,6 +40,26 @@
       自动填写
     </view>
   </view>
+  <!-- 选择地址 -->
+  <view class="info" wx:if="{{!isSelfGet}}" bindtap="toAddAddr">
+    <view class="left gray-word ">      
+      <view wx:if="{{!hasAddr}}">
+        请选择收货地址  
+      </view>
+      <view wx:if="{{hasAddr}}">
+        <view class="addr-info">
+          {{userInfo.addr}} {{userInfo.houseNum}}
+        </view>  
+        <view class="custom-info">
+          <text class="uname">{{userInfo.uname}}</text><text class="gender">（{{userInfo.gender}}）</text><text class="phone">电话：{{userInfo.phone}}</text>   
+        </view>
+      </view>
+    </view>    
+    <view class="right">
+      <text class="iconfont icon-youjiantou"></text>
+    </view>
+  </view>
+
   <!-- 商品明细 -->
   <view class="title gray-word">
       商品明细 <text class="iconfont icon-xiajiantou2"></text>

@@ -1,21 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-
+    "pages/user_msg/user_msg",
+    "pages/users/users",
     "pages/addAddr/addAddr",
-
-    "pages/test/test",
-
-    "pages/addrMap/addrMap",
-
-    
     "pages/addr/addr",
     "pages/pay/pay",
+    "pages/test/test",
     "pages/remark/remark",
     "pages/ticket/ticket",
     "pages/gettea/gettea",
     "pages/logs/logs",
-    "pages/user/user"
+    "pages/addrMap/addrMap"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,7 +37,7 @@
         "selectedIconPath": "assets/images/navbar/ticket-brown.png"
       },
       {
-        "pagePath": "pages/user/user",
+        "pagePath": "pages/users/users",
         "text": "我的",
         "iconPath": "assets/images/navbar/user.png",
         "selectedIconPath": "assets/images/navbar/user-brown.png"

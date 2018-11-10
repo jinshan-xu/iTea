@@ -1,7 +1,9 @@
 page{
   background-color: #efefef;
+  height: 100%;
 }
 .main{
+  height: 100%;
   .alert-info{
     margin-top: 200rpx;
     >view{
@@ -20,5 +22,21 @@ page{
     width: 90%; 
     color: #fff;
     background-color: #C6834E;
+  }
+  .addr-list{
+    max-height: 80%;
+  }
+  .addr-list .addr-info text{
+    margin-right: .5rem;
+  }
+  .addr-list .item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    padding: .5rem;
+    margin: .3rem 0;
+    background-color: #fff;
   }
 }

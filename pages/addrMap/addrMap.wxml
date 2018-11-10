@@ -12,9 +12,11 @@
       circles="{{circles}}"
       show-location      
     ></map>
+
     <view class="pointer">
       <image class="{{jump?'jump':''}}" src="../../assets/images/location/pointer.png" aspectFill lazy-load width="375" height="150"/>
     </view>
+    
     <view class="back-posi" bindtap="moveToLocation">
       <text class="iconfont icon-78 active"></text>
     </view>

@@ -5,14 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: [],  // 用户填写的地址信息
+    hasAddr: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (options) {    
+    if(options.userInfo){
+      var info = JSON.parse(options.userInfo);
+      var userInfo = [];
+      userInfo.push(info);
+      this.setData({
+        userInfo,
+        hasAddr: true
+      })
+    }        
   },
 
   /**
@@ -64,8 +73,23 @@ Page({
 
   },
   addAddrBtn(){
+    // 跳转信息填写页面
     wx.navigateTo({
       url: '../addAddr/addAddr'
+    })
+  },
+  alterUserInfo(){
+    // 修改地址信息
+    var url = '../addAddr/addAddr?userInfo=' + JSON.stringify(this.data.userInfo[0]);
+    wx.navigateTo({
+      url
+    })
+  },
+  toPay(){
+    // 返回 toPay 页面
+    var url = '../pay/pay?userInfo=' + JSON.stringify(this.data.userInfo[0])
+    wx.navigateTo({      
+      url
     })
   }
 })

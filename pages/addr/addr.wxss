@@ -1,5 +1,10 @@
 page {
   background-color: #efefef;
+  height: 100%;
+}
+
+.main {
+  height: 100%;
 }
 
 .main .alert-info {
@@ -23,5 +28,33 @@ page {
   width: 90%;
   color: #fff;
   background-color: #C6834E;
+}
+
+.main .addr-list {
+  max-height: 80%;
+}
+
+.main .addr-list .addr-info text {
+  margin-right: .5rem;
+}
+
+.main .addr-list .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  padding: .5rem;
+  margin: .3rem 0;
+  background-color: #fff;
 }
 /*# sourceMappingURL=addr.wxss.map */

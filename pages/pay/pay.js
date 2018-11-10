@@ -10,23 +10,33 @@ Page({
     totalPrice: 0,  // 总价
     isSelfGet: true, // 是否自取
     disCountPrice: 0, // 总共优惠金额
-    phone: undefined
+    phone: undefined,
+    hasAddr: false,      // 是否有地址传回来
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // var proList = JSON.parse(options.data);
-    // var orderNum = options.orderNum;
-    // var totalPrice = options.totalPrice;
-    // var disCountPrice = this.getDisPri(proList);    
-    // this.setData({
-    //   proList, orderNum, totalPrice, disCountPrice
-    // });
-    // wx.navigateTo({
-    //   url: '../index/index'
-    // })
+    var proList = JSON.parse(options.data);
+    var orderNum = options.orderNum;
+    var totalPrice = options.totalPrice;
+    var disCountPrice = this.getDisPri(proList);    
+    this.setData({
+      proList, orderNum, totalPrice, disCountPrice
+    });
+    wx.navigateTo({
+      url: '../index/index'
+    })
+    if(options.userInfo){
+      // 填写了地址
+      var userInfo = JSON.parse(options.userInfo);
+      this.setData({
+        hasAddr: true,
+        userInfo
+      })
+    }
   },
 
   /**

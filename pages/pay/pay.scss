@@ -1,3 +1,6 @@
+page{
+  background-color: #efefef;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -220,6 +223,11 @@
       top: 3px;
     }
   }
+  .addr-info, .custom-info, .phone{
+    font-size: 10px;
+    color: #000;
+    margin: .1rem 0;
+  }
   .pay{
     position: fixed;    
     bottom: 0;    
@@ -247,10 +255,5 @@
       text-align: center;
       padding: 1rem 0;
     }
-  }
-  .white{
-    background-color: #efefef;
-    height: 200rpx;
-    width: 100%;
   }
 }

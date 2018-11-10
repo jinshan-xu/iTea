@@ -1,5 +1,6 @@
 <!--pages/addr/addr.wxml-->
 <view class="main">
+  <!-- 是否有已存在地址？ -->
   <view wx:if="{{!hasAddr}}" class="alert-info">
     <view>
       暂无地址信息
@@ -7,8 +8,26 @@
     <view>
       请点击底部按钮添加地址信息
     </view>
-    <view class="btn-container">
-      <button type="default" size="defaultSize" bindtap="addAddrBtn"  hover-class="defaultTap"  class="add-addr-btn">+ 添加地址</button>
+  </view>
+  <!-- 地址列表 -->
+  <scroll-view scroll-y class="addr-list" wx:if="{{hasAddr}}">
+    <view class="item" wx:for="{{userInfo}}" wx:key="{{index}}"
+    >
+      <view class="left" bindtap="toPay">
+        <view class="addr-info">
+          <text>{{item.addr}}</text><text>{{item.houseNum}}</text>
+        </view>
+        <view class="uname">          
+          <text>{{item.uname}}</text><text>（{{item.gender}}）</text><text>{{item.phone}}</text>
+        </view> 
+      </view>
+      <view class="right" bindtap="alterUserInfo">
+        <text class="iconfont icon-xiugaiziliao"></text>
+      </view>
     </view>
-  </view>  
+  </scroll-view>
+
+  <view class="btn-container">
+    <button type="default" size="defaultSize" bindtap="addAddrBtn" hover-class="defaultTap" class="add-addr-btn">+ 添加地址</button>
+  </view>
 </view>

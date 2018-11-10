@@ -19,14 +19,13 @@
 
 
 /* iconfont */
-
 @font-face {
   font-family: 'iconfont';  /* project id 884342 */
-  src: url('//at.alicdn.com/t/font_884342_g0plny1xmhj.eot');
-  src: url('//at.alicdn.com/t/font_884342_g0plny1xmhj.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_884342_g0plny1xmhj.woff') format('woff'),
-  url('//at.alicdn.com/t/font_884342_g0plny1xmhj.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_884342_g0plny1xmhj.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_884342_56hpe150bd8.eot');
+  src: url('//at.alicdn.com/t/font_884342_56hpe150bd8.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_884342_56hpe150bd8.woff') format('woff'),
+  url('//at.alicdn.com/t/font_884342_56hpe150bd8.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_884342_56hpe150bd8.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -70,6 +69,8 @@
 .icon-shuiguo:before { content: "\e662"; }
 
 .icon-xinpin:before { content: "\e615"; }
+
+.icon-xiugaiziliao:before { content: "\e617"; }
 
 .icon-shangjiantou1:before { content: "\e730"; }
 
